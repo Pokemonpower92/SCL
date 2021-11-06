@@ -24,17 +24,6 @@
     return l;
 }
 
- list *copy_list(list *l) {
-     list *new_l = new_list();
-     list_node *curr;
-
-    for(curr = next(l->sentinel); curr != l->sentinel; curr = next(curr)) {
-        push_front(new_l, curr->value);
-    }
-
-    return new_l;
-}
-
 /* Deletion */
 void free_list(list *l) {
     clear(l);
@@ -44,8 +33,8 @@ void free_list(list *l) {
 void clear(list *l) {
      list_node *curr;
 
-    for(curr = next(l->sentinel); curr != l->sentinel; curr = next(curr)) {
-        erase(l, curr);
+    while(l->size != 0) {
+        pop_back(l);
     }
 }
 
@@ -102,9 +91,11 @@ void *pop_front(list *l) {
 }
 
 void erase(list *l, list_node *n) {
-
-    n->back->front = n->front;
-    n->front->back = n->back;
+    list_node *pv = prev(n);
+    list_node *nx = next(n);
+    
+    pv->front = nx;
+    nx->back = pv;
     l->size--;
 
     free(n);

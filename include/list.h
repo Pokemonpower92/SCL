@@ -24,7 +24,6 @@ typedef struct list{
 /* API */
 /* Creation */
 list *new_list();
-list *copy_list(list *list);
 
 /* Deletion */
 void free_list(list *list);

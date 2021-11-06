@@ -1,4 +1,4 @@
-CC = gcc 
+CC = gcc
 INCLUDES = -Iinclude
 CFLAGS = $(INCLUDES)
 LIBDIR = lib

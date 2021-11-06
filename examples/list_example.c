@@ -6,22 +6,17 @@
 
 int main(int argc, char **argv) {
     list *l = new_list();
+    list *b;
     char *line;
     size_t len;
 
     while(getline(&line, &len, stdin) != -1) {
-        printf("%s", line);
-        push_back(l, (void *)line);
+        push_back(l, (void *)strdup(line));
     }
-
-    clear(l);
 
     while(l->size != 0) {
-        char *value = (char *)pop_front(l);
-        printf("%s\n", value);
+        printf("%s", (char *)pop_back(l));
     }
-
-    free_list(l);
 
     return 0;
 }
