@@ -14,6 +14,8 @@ int main(int argc, char **argv) {
         push_back(l, (void *)line);
     }
 
+    clear(l);
+
     while(l->size != 0) {
         char *value = (char *)pop_front(l);
         printf("%s\n", value);
